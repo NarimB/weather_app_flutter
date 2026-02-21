@@ -1,4 +1,3 @@
-import 'package:castle_weather/models/weather_model.dart';
 import 'package:castle_weather/providers/weather_provider.dart';
 import 'package:castle_weather/screens/search_page.dart';
 import 'package:castle_weather/widgets/weather_card.dart';
@@ -18,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<WeatherProvider>().fetchWeather('Astana');
+      context.read<WeatherProvider>().fetchWeather('Almaty');
     });
   }
 
