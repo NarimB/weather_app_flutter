@@ -40,16 +40,25 @@ class _WeatherCardState extends State<WeatherCard>
     final provider = context.watch<WeatherProvider>();
     return SlideTransition(
       position: _slide,
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Padding(
-          padding: EdgeInsets.all(24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Card(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(widget.weatherModel.cityName),
-              Text('${widget.weatherModel.temperature} C'),
+              SizedBox(height: 30),
+              Text(
+                widget.weatherModel.cityName,
+                style: TextStyle(fontSize: 26),
+              ),
+              Text(
+                '${widget.weatherModel.temperature.toInt()} C',
+                style: TextStyle(fontSize: 24),
+              ),
               Image.network(
                 'https://openweathermap.org/img/wn/${widget.weatherModel.icon}@2x.png',
               ),
@@ -58,7 +67,7 @@ class _WeatherCardState extends State<WeatherCard>
               Text('Скорость ветра: ${widget.weatherModel.windSpeed}'),
 
               SizedBox(height: 20),
-              Text('Прогноз на 3 дня'),
+              Text('Прогноз на 5 дня'),
               SizedBox(height: 10),
               SizedBox(
                 height: 180,
@@ -68,8 +77,8 @@ class _WeatherCardState extends State<WeatherCard>
                   itemBuilder: (context, index) {
                     final day = provider.forecast[index];
                     return Container(
-                      margin: EdgeInsets.all(8),
-                      padding: EdgeInsets.all(12),
+                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                      padding: EdgeInsets.all(8),
                       color: Colors.white,
                       child: Column(
                         children: [
@@ -84,6 +93,7 @@ class _WeatherCardState extends State<WeatherCard>
                   },
                 ),
               ),
+              SizedBox(height: 30),
             ],
           ),
         ),

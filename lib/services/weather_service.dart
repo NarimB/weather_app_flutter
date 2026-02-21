@@ -41,7 +41,7 @@ class WeatherService {
           dailyForecast.add(ForecastModel.fromJson(item));
         }
       }
-      return dailyForecast.take(3).toList();
+      return dailyForecast.take(5).toList();
     } else {
       throw Exception('Ощибка');
     }
