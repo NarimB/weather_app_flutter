@@ -20,6 +20,33 @@ class WeatherProvider extends ChangeNotifier {
       weather = await _service.fetchWeather(city);
       forecast = await _service.fetchForecast(city);
 
+      print('TO STRING');
+      print(weather.toString());
+
+      WeatherModel weather1 = WeatherModel(
+        cityName: 'Test City',
+        temperature: 25.0,
+        description: 'Clear sky',
+        icon: '01d',
+        humidity: 60,
+        windSpeed: 5.0,
+      );
+
+      WeatherModel weather2 = WeatherModel(
+        cityName: 'Test City',
+        temperature: 25.0,
+        description: 'Clear sky',
+        icon: '01d',
+        humidity: 60,
+        windSpeed: 5.0,
+      );
+
+      WeatherModel weatherCopy = weather2.copyWith(temperature: 30.0);
+      print('COPY WITH: $weatherCopy');
+      print(weatherCopy.toString());
+
+      print(weather1 == weather2);
+
       isLoading = false;
       notifyListeners();
     } catch (e) {
